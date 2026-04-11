@@ -34,11 +34,11 @@
     <main id="home">
         <section class="hero section">
             <div class="hero-copy">
-                <p class="eyebrow">Radio-first message transport</p>
-                <h1>Short encrypted messages over analog audio channels</h1>
+                <p class="eyebrow">Private messaging through sound</p>
+                <h1>Send short encrypted messages through an audio signal</h1>
                 <p class="lede">
-                    <code>FSK Comm</code> is a library that turns logical messages into BFSK audio bursts and recovers them back into validated payloads.
-                    It is built for compact field messaging, reproducible desktop diagnostics, and Android-style record-then-decode flows.
+                    <code>FSK Comm</code> lets one device send a short message as sound and another device receive and decode it.
+                    The experience stays compact: write a message, play the signal, listen on the other side, and read the result.
                 </p>
                 <div class="hero-actions">
                     <a class="button button-play" href="https://play.google.com/store/apps/details?id=REPLACE_ME" target="_blank" rel="noreferrer">
@@ -54,15 +54,14 @@
                 </div>
             </div>
             <div class="hero-panel card">
-                <p class="panel-label">Implemented pipeline</p>
+                <p class="panel-label">How it works</p>
                 <ol class="pipeline">
-                    <li>Logical message</li>
-                    <li>Optional encryption</li>
-                    <li>Transport fragments</li>
-                    <li>PHY frames</li>
-                    <li>BFSK PCM</li>
-                    <li>Recorded PCM</li>
-                    <li>Frame decode and reassembly</li>
+                    <li>Write a short message</li>
+                    <li>Protect it with a shared key</li>
+                    <li>Turn it into an audio signal</li>
+                    <li>Play or transmit the sound</li>
+                    <li>Listen on the receiving side</li>
+                    <li>Decode and show the message</li>
                 </ol>
                 <div class="signal-grid" aria-hidden="true">
                     <span style="--bar-h: 22px; --bar-delay: 0.07s; --bar-speed: 0.88s;"></span>
@@ -104,59 +103,59 @@
             <div class="section-heading">
                 <p class="eyebrow">Overview</p>
                 <p class="section-copy">
-                    The project focuses on a narrow problem: reliable transport of short messages through analog audio, with encryption,
-                    fragmentation, frame protection, structured diagnostics, and a clean boundary between protocol logic and host I/O.
+                    FSK Comm is designed for situations where you want a simple way to pass a short message through sound,
+                    while keeping the flow clear and the message protected.
                 </p>
             </div>
             <div class="card-grid">
                 <article class="card feature-card">
-                    <p class="feature-kicker">Secure by design</p>
-                    <h3>Authenticated encryption</h3>
-                    <p>ChaCha20-Poly1305 protects message payloads, while replay protection guards against duplicate accepted messages.</p>
+                    <p class="feature-kicker">Private</p>
+                    <h3>Shared-key protection</h3>
+                    <p>Messages can be encrypted so that both sides need the same key to read the exchange.</p>
                 </article>
                 <article class="card feature-card">
-                    <p class="feature-kicker">Channel resilience</p>
-                    <h3>Protected PHY frames</h3>
-                    <p>CRC, whitening, FEC, interleaving, burst search, and frame recovery are part of the active implementation.</p>
+                    <p class="feature-kicker">Practical</p>
+                    <h3>Built around sound</h3>
+                    <p>The app is centered on a simple send and listen workflow, turning messages into audio and back again.</p>
                 </article>
                 <article class="card feature-card">
-                    <p class="feature-kicker">Host ready</p>
-                    <h3>Desktop and Android paths</h3>
-                    <p>The desktop CLI covers debug workflows, while the <code>runtime</code> module is shaped for Android integration.</p>
+                    <p class="feature-kicker">Easy to follow</p>
+                    <h3>Clear app flow</h3>
+                    <p>The main screen, instruction view, and settings screen keep the core actions close and understandable.</p>
                 </article>
             </div>
         </section>
 
         <section id="architecture" class="section split-section">
             <div class="section-heading">
-                <p class="eyebrow">Architecture</p>
+                <p class="eyebrow">How It Works</p>
             </div>
             <div class="split-layout">
                 <div class="card stack-card">
                     <div class="stack-item">
-                        <h3><code>core</code></h3>
-                        <p>Logical messages, encryption, replay protection, fragmentation, reassembly, and diagnostics contracts.</p>
+                        <h3>1. Write and send</h3>
+                        <p>The sender enters a short message and starts transmission from the app.</p>
                     </div>
                     <div class="stack-item">
-                        <h3><code>phy</code></h3>
-                        <p>Transmission profiles, frame codec, BFSK modulation, demodulation, burst search, and PCM helpers.</p>
+                        <h3>2. Convert to sound</h3>
+                        <p>The message is encoded into an audio signal that can be played and received.</p>
                     </div>
                     <div class="stack-item">
-                        <h3><code>runtime</code></h3>
-                        <p>Encode and decode orchestration for record-then-decode sessions and mobile-friendly integration.</p>
+                        <h3>3. Listen and decode</h3>
+                        <p>The receiving side listens, records the signal, and turns it back into readable text.</p>
                     </div>
                     <div class="stack-item">
-                        <h3><code>app</code></h3>
-                        <p>CLI tooling for WAV inspection, metadata dumps, profile comparison, and verbose diagnostics.</p>
+                        <h3>4. Protect the exchange</h3>
+                        <p>A shared key can be used so the message is not readable without the correct secret.</p>
                     </div>
                 </div>
                 <div class="card notes-card">
-                    <h3>Recommended usage today</h3>
+                    <h3>Good fit for</h3>
                     <ul class="bullet-list">
-                        <li>Use the <code>robust</code> profile as the default choice for real radio conditions.</li>
-                        <li>Prefer record-then-decode as the main mobile workflow.</li>
-                        <li>Keep audio I/O in the host application and modem/message logic inside <code>runtime</code>.</li>
-                        <li>Use structured diagnostics instead of treating CLI text as the source of truth.</li>
+                        <li>Short point-to-point messages where a compact workflow matters.</li>
+                        <li>Situations where a shared secret should protect the content.</li>
+                        <li>Mobile flows where one side sends and the other side listens and decodes.</li>
+                        <li>Projects that want a focused app flow instead of a full messaging platform.</li>
                     </ul>
                 </div>
             </div>
@@ -164,20 +163,20 @@
 
         <section class="section metrics-section">
             <div class="metric">
-                <span class="metric-value">Java 17</span>
-                <span class="metric-label">current build target</span>
+                <span class="metric-value">Android app</span>
+                <span class="metric-label">send and listen workflow</span>
             </div>
             <div class="metric">
-                <span class="metric-value">3 profiles</span>
-                <span class="metric-label">robust, balanced, fast</span>
+                <span class="metric-value">Encrypted</span>
+                <span class="metric-label">shared-key message protection</span>
             </div>
             <div class="metric">
-                <span class="metric-value">BFSK</span>
-                <span class="metric-label">audio modulation layer</span>
+                <span class="metric-value">Audio signal</span>
+                <span class="metric-label">message carried through sound</span>
             </div>
             <div class="metric">
-                <span class="metric-value">CLI + runtime</span>
-                <span class="metric-label">debug and integration surfaces</span>
+                <span class="metric-value">Compact flow</span>
+                <span class="metric-label">write, play, receive, read</span>
             </div>
         </section>
 
@@ -185,7 +184,7 @@
             <div class="section-heading">
                 <p class="eyebrow">Android App</p>
                 <p class="section-copy">
-                    The mobile app keeps the workflow minimal: write or listen on the main screen, follow the built-in instruction flow, and keep encryption and audio settings close at hand.
+                    The interface is split into three simple parts: the main send/listen screen, a short usage guide, and settings for security and audio behavior.
                 </p>
             </div>
             <div class="showcase-stage card">
