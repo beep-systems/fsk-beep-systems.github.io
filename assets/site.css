@@ -200,7 +200,7 @@ main > .section:not(.hero) {
 }
 
 .hero-copy h1 {
-    font-size: clamp(1.92rem, 4vw, 3.36rem);
+    font-size: clamp(1.8rem, 4vw, 3.2rem);
 }
 
 .hero-copy::after,
