@@ -1,1 +1,166 @@
-FSK OK
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FSK Comm | Short encrypted messaging over analog audio</title>
+    <meta name="description" content="FSK Comm is a radio-first Java 17 stack for transporting short encrypted messages over analog audio channels with BFSK modulation.">
+    <meta name="keywords" content="FSK Comm, fsk-comm, BFSK, analog audio messaging, encrypted messaging, radio-first, Java 17, Android integration">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="#0f141e">
+    <meta property="og:title" content="FSK Comm">
+    <meta property="og:description" content="Short encrypted messaging over analog audio channels.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fsk.beep.systems/">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<div class="site-shell">
+    <header class="topbar">
+        <a class="brand" href="#home" aria-label="FSK Comm home">
+            <span>FSK Comm</span>
+        </a>
+        <nav class="nav">
+            <a href="#overview">Overview</a>
+            <a href="#architecture">Architecture</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main id="home">
+        <section class="hero section">
+            <div class="hero-copy">
+                <p class="eyebrow">Radio-first message transport</p>
+                <h1>Short encrypted messages over analog audio channels</h1>
+                <p class="lede">
+                    <code>FSK Comm</code> is a Java 17 stack that turns logical messages into BFSK audio bursts and recovers them back into validated payloads.
+                    It is built for compact field messaging, reproducible desktop diagnostics, and Android-style record-then-decode flows.
+                </p>
+                <div class="hero-actions">
+                    <a class="button button-secondary" href="mailto:contact@beep.systems">contact@beep.systems</a>
+                </div>
+            </div>
+            <div class="hero-panel card">
+                <p class="panel-label">Implemented pipeline</p>
+                <ol class="pipeline">
+                    <li>Logical message</li>
+                    <li>Optional encryption</li>
+                    <li>Transport fragments</li>
+                    <li>PHY frames</li>
+                    <li>BFSK PCM</li>
+                    <li>Recorded PCM</li>
+                    <li>Frame decode and reassembly</li>
+                </ol>
+                <div class="signal-grid" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </section>
+
+        <section id="overview" class="section">
+            <div class="section-heading">
+                <p class="eyebrow">Overview</p>
+                <h2>Core points only</h2>
+                <p class="section-copy">
+                    The project focuses on a narrow problem: reliable transport of short messages through analog audio, with encryption,
+                    fragmentation, frame protection, structured diagnostics, and a clean boundary between protocol logic and host I/O.
+                </p>
+            </div>
+            <div class="card-grid">
+                <article class="card feature-card">
+                    <p class="feature-kicker">Secure by design</p>
+                    <h3>Authenticated encryption</h3>
+                    <p>ChaCha20-Poly1305 protects message payloads, while replay protection guards against duplicate accepted messages.</p>
+                </article>
+                <article class="card feature-card">
+                    <p class="feature-kicker">Channel resilience</p>
+                    <h3>Protected PHY frames</h3>
+                    <p>CRC, whitening, FEC, interleaving, burst search, and frame recovery are part of the active implementation.</p>
+                </article>
+                <article class="card feature-card">
+                    <p class="feature-kicker">Host ready</p>
+                    <h3>Desktop and Android paths</h3>
+                    <p>The desktop CLI covers debug workflows, while the <code>runtime</code> module is shaped for Android integration.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="architecture" class="section split-section">
+            <div class="section-heading">
+                <p class="eyebrow">Architecture</p>
+                <h2>Four modules, one transport path</h2>
+            </div>
+            <div class="split-layout">
+                <div class="card stack-card">
+                    <div class="stack-item">
+                        <h3><code>core</code></h3>
+                        <p>Logical messages, encryption, replay protection, fragmentation, reassembly, and diagnostics contracts.</p>
+                    </div>
+                    <div class="stack-item">
+                        <h3><code>phy</code></h3>
+                        <p>Transmission profiles, frame codec, BFSK modulation, demodulation, burst search, and PCM helpers.</p>
+                    </div>
+                    <div class="stack-item">
+                        <h3><code>runtime</code></h3>
+                        <p>Encode and decode orchestration for record-then-decode sessions and mobile-friendly integration.</p>
+                    </div>
+                    <div class="stack-item">
+                        <h3><code>app</code></h3>
+                        <p>CLI tooling for WAV inspection, metadata dumps, profile comparison, and verbose diagnostics.</p>
+                    </div>
+                </div>
+                <div class="card notes-card">
+                    <h3>Recommended usage today</h3>
+                    <ul class="bullet-list">
+                        <li>Use the <code>robust</code> profile as the default choice for real radio conditions.</li>
+                        <li>Prefer record-then-decode as the main mobile workflow.</li>
+                        <li>Keep audio I/O in the host application and modem/message logic inside <code>runtime</code>.</li>
+                        <li>Use structured diagnostics instead of treating CLI text as the source of truth.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section metrics-section">
+            <div class="metric">
+                <span class="metric-value">Java 17</span>
+                <span class="metric-label">current build target</span>
+            </div>
+            <div class="metric">
+                <span class="metric-value">3 profiles</span>
+                <span class="metric-label">robust, balanced, fast</span>
+            </div>
+            <div class="metric">
+                <span class="metric-value">BFSK</span>
+                <span class="metric-label">audio modulation layer</span>
+            </div>
+            <div class="metric">
+                <span class="metric-value">CLI + runtime</span>
+                <span class="metric-label">debug and integration surfaces</span>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="contact" class="footer">
+        <div>
+            <p class="footer-title">FSK Comm</p>
+            <p class="footer-copy">A focused stack for short encrypted messaging over analog audio.</p>
+        </div>
+        <div class="footer-links">
+            <a href="mailto:contact@beep.systems">Email</a>
+            <a href="/privacy.html">Privacy</a>
+            <a href="/terms.html">Terms</a>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
