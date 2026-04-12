@@ -98,18 +98,18 @@
                             <span class="play-badge-title">Google Play</span>
                         </span>
                     </a>
-                    <a class="button button-secondary" href="mailto:contact@beep.systems">contact@beep.systems</a>
+                    <a class="button button-secondary" href="mailto:contact@beep.systems">Contact</a>
                 </div>
             </div>
             <div class="hero-panel card">
-                <p class="panel-label">How it works</p>
+                <p class="panel-label">Transmission pipeline</p>
                 <ol class="pipeline">
-                    <li>Write a short message</li>
-                    <li>Protect it with a shared key</li>
-                    <li>Turn it into an audio signal</li>
-                    <li>Play or transmit the sound</li>
-                    <li>Listen on the receiving side</li>
-                    <li>Decode and show the message</li>
+                    <li>ChaCha20-Poly1305 encrypted fragments</li>
+                    <li>CRC and whitening</li>
+                    <li>FEC and interleaving</li>
+                    <li>PHY framing to BFSK PCM</li>
+                    <li>Recorded PCM burst search</li>
+                    <li>Frame recovery and validation</li>
                 </ol>
                 <div class="signal-grid" aria-hidden="true">
                     <span style="--bar-h: 22px; --bar-delay: 0.07s; --bar-speed: 0.88s;"></span>
@@ -152,7 +152,7 @@
                 <p class="eyebrow">Overview</p>
                 <p class="section-copy">
                     FSK Comm is designed for short point-to-point communication where a message needs to travel through analog audio instead of a traditional network path.
-                    The project combines an Android user experience with a Java 17 stack that uses BFSK modulation to carry compact encrypted messages through sound.
+                    The project uses BFSK modulation to carry compact encrypted messages through sound.
                 </p>
             </div>
             <div class="card-grid">
@@ -194,7 +194,7 @@
                     </div>
                     <div class="stack-item">
                         <h3>4. Protect the exchange</h3>
-                        <p>A shared key can be used so the message is not readable without the correct secret.</p>
+                        <p>A shared key is used, so the message is not readable without the correct secret.</p>
                     </div>
                 </div>
                 <div class="card notes-card">
@@ -231,9 +231,6 @@
         <section id="android-app" class="section app-showcase">
             <div class="section-heading">
                 <p class="eyebrow">Android App</p>
-                <p class="section-copy">
-                    The Android app interface is split into three simple parts: the main send-and-listen screen, a short usage guide, and settings for security and audio behavior.
-                </p>
             </div>
             <div class="showcase-stage card">
                 <div class="phone-stack" aria-label="FSK Comm app screenshots">
