@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>FSK Comm | Encrypted Audio Messaging App with BFSK for Android</title>
-    <meta name="description" content="FSK Comm is an Android app and Java 17 stack for sending short encrypted messages over analog audio with BFSK modulation, shared-key protection, and a compact send-and-listen workflow.">
+    <meta name="description" content="FSK Comm is an Android app and Java 17 stack for sending short encrypted messages over analog audio with BFSK modulation, shared-key protection, and an optional keyed voice scrambler mode.">
     <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
     <meta name="theme-color" content="#0f141e">
     <meta name="author" content="Beep Systems">
     <meta property="og:title" content="FSK Comm | Encrypted Audio Messaging App with BFSK for Android">
-    <meta property="og:description" content="Send short encrypted messages over analog audio with BFSK modulation, shared-key protection, and an Android send-and-listen workflow.">
+    <meta property="og:description" content="Send short encrypted messages over analog audio with BFSK modulation, shared-key protection, and an optional keyed voice scrambler mode.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fsk.beep.systems/">
     <meta property="og:site_name" content="FSK Comm">
@@ -20,7 +20,7 @@
     <meta property="og:image:alt" content="FSK Comm Android main screen showing encrypted audio messaging controls">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="FSK Comm | Encrypted Audio Messaging App with BFSK for Android">
-    <meta name="twitter:description" content="Android audio messaging with BFSK modulation, shared-key encryption, and a compact send-and-listen flow.">
+    <meta name="twitter:description" content="Android audio messaging with BFSK modulation, shared-key encryption, and an optional keyed voice scrambler mode.">
     <meta name="twitter:image" content="https://fsk.beep.systems/assets/main_en.jpg">
     <meta name="twitter:image:alt" content="FSK Comm Android main screen showing encrypted audio messaging controls">
     <link rel="canonical" href="https://fsk.beep.systems/">
@@ -35,7 +35,7 @@
                     "@id": "https://fsk.beep.systems/#website",
                     "url": "https://fsk.beep.systems/",
                     "name": "FSK Comm",
-                    "description": "FSK Comm is an Android app and Java 17 stack for sending short encrypted messages over analog audio with BFSK modulation.",
+                    "description": "FSK Comm is an Android app and Java 17 stack for sending short encrypted messages over analog audio with BFSK modulation, plus an optional keyed voice scrambler mode.",
                     "inLanguage": "en"
                 },
                 {
@@ -50,7 +50,7 @@
                     "name": "FSK Comm",
                     "applicationCategory": "CommunicationApplication",
                     "operatingSystem": "Android",
-                    "description": "An Android audio messaging app for sending short encrypted messages over analog audio using BFSK modulation and shared-key protection.",
+                    "description": "An Android audio messaging app for sending short encrypted messages over analog audio using BFSK modulation and shared-key protection, with an additional keyed voice scrambler mode.",
                     "url": "https://fsk.beep.systems/",
                     "image": "https://fsk.beep.systems/assets/main_en.jpg",
                     "publisher": {
@@ -60,7 +60,8 @@
                         "Short encrypted messaging over analog audio",
                         "BFSK modulation",
                         "Shared-key message protection",
-                        "Android send and listen workflow"
+                        "Android send and listen workflow",
+                        "Optional keyed voice scrambler mode"
                     ]
                 }
             ]
@@ -70,11 +71,12 @@
 <body>
 <div class="site-shell">
     <header class="topbar">
-        <a class="brand" href="#home" aria-label="FSK Comm 0.1.5 home">
-            <span>FSK Comm 0.1.5</span>
+        <a class="brand" href="#home" aria-label="FSK Comm 0.1.18 home">
+            <span>FSK Comm 0.1.18</span>
         </a>
         <nav class="nav" aria-label="Primary">
             <a href="#architecture">How It Works</a>
+            <a href="#voice-scrambler">Voice Scrambler</a>
             <a href="#android-app">Android App</a>
         </nav>
     </header>
@@ -87,6 +89,7 @@
                 <p class="lede">
                     <code>FSK Comm</code> lets one device send a short message as sound and another device receive and decode it.
                     The experience stays compact: write a message, play the signal, listen on the other side, and read the result.
+                    The stack also includes an optional keyed voice scrambler mode for analog voice experiments.
                 </p>
                 <div class="hero-actions">
                     <a class="button button-play" href="https://play.google.com/store/apps/details?id=systems.beep.fskcomm" target="_blank" rel="noreferrer">
@@ -152,7 +155,7 @@
                 <p class="eyebrow">Overview</p>
                 <p class="section-copy">
                     FSK Comm is designed for short point-to-point communication where a message needs to travel through analog audio instead of a traditional network path.
-                    The project uses BFSK modulation to carry compact encrypted messages through sound.
+                    The project uses BFSK modulation to carry compact encrypted messages through sound, while keeping optional voice scrambling as a clearly separate secondary mode.
                 </p>
             </div>
             <div class="card-grid">
@@ -167,9 +170,9 @@
                     <p>The app is centered on a simple send-and-listen workflow, turning text into audio and audio back into readable text.</p>
                 </article>
                 <article class="card feature-card">
-                    <p class="feature-kicker">Easy to follow</p>
-                    <h3>Clear app flow</h3>
-                    <p>The main screen, instruction view, and settings screen keep transmission, decoding, and security settings close and understandable.</p>
+                    <p class="feature-kicker">Additional mode</p>
+                    <h3>Keyed voice scrambling</h3>
+                    <p>An optional voice mode can scramble analog speech for practical obfuscation, separate from the primary encrypted text workflow.</p>
                 </article>
             </div>
         </section>
@@ -209,6 +212,37 @@
             </div>
         </section>
 
+        <section id="voice-scrambler" class="section split-section">
+            <div class="section-heading">
+                <p class="eyebrow">Voice Scrambler</p>
+            </div>
+            <div class="split-layout">
+                <div class="card stack-card">
+                    <div class="stack-item">
+                        <h3>Optional secondary mode</h3>
+                        <p>Alongside short-message transport, FSK Comm can also process voice audio with a keyed scrambler for analog radio and speaker-microphone experiments.</p>
+                    </div>
+                    <div class="stack-item">
+                        <h3>Built for practical playback</h3>
+                        <p>The scrambler uses voice-band processing, sync markers, and reversible audio transforms so the result stays recordable and recoverable with the same key.</p>
+                    </div>
+                    <div class="stack-item">
+                        <h3>Kept separate from message mode</h3>
+                        <p>This feature complements the BFSK text pipeline. It does not replace authenticated message encryption and is presented as an additional capability.</p>
+                    </div>
+                </div>
+                <div class="card notes-card">
+                    <h3>What to expect</h3>
+                    <ul class="bullet-list">
+                        <li>Useful for obfuscating short voice exchanges in analog audio workflows.</li>
+                        <li>Runs as a distinct keyed audio transform rather than as part of text-message framing.</li>
+                        <li>Intended for practical voice masking experiments, not as a claim of cryptographic voice encryption.</li>
+                        <li>Fits the same Android-oriented, record-and-recover style as the rest of the project.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
         <section class="section metrics-section">
             <div class="metric">
                 <span class="metric-value">Android app</span>
@@ -223,8 +257,8 @@
                 <span class="metric-label">message carried through sound</span>
             </div>
             <div class="metric">
-                <span class="metric-value">Compact flow</span>
-                <span class="metric-label">write, play, receive, read</span>
+                <span class="metric-value">Voice mode</span>
+                <span class="metric-label">optional keyed scrambling add-on</span>
             </div>
         </section>
 
